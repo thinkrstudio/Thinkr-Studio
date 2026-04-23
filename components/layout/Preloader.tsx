@@ -165,8 +165,8 @@ export default function Preloader() {
           className="absolute inset-x-0 bg-forest overflow-hidden"
           style={
             half === "top"
-              ? { top: 0,    height: "50vh" }
-              : { bottom: 0, height: "50vh" }
+              ? { top: 0,    height: "50%" }
+              : { bottom: 0, height: "50%" }
           }
           initial={{ y: "0%" }}
           animate={
