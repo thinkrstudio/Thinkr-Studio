@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-cream: #ffeed4;
+  --color-cream-dark: #f5ddb5;
+  --color-cream-muted: #fdf5e8;
+  --color-forest: #384531;
+  --color-forest-light: #4a5c3f;
+  --color-forest-dark: #2a3324;
+  --color-ember: #c16934;
+  --color-ember-light: #d4824a;
+  --color-ember-dark: #9e5226;
+
+  /* Typography */
+  --font-display: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter, "Inter"), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── Keyframes ─────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ─── Base ───────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffeed4;
+  color: #384531;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #c16934;
+  color: #ffeed4;
+}
+
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #ffeed4; }
+::-webkit-scrollbar-thumb  { background: #384531; border-radius: 2px; }
+
+/* ─── Animation Utilities ────────────────────── */
+.animate-marquee   { animation: marquee 40s linear infinite; }
+.animate-float     { animation: float-y 6s ease-in-out infinite; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Reduced Motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee,
+  .animate-float,
+  .animate-pulse-dot { animation-play-state: paused; }
+}
