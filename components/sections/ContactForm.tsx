@@ -26,6 +26,8 @@ export default function ContactForm() {
 
   const [form,      setForm]      = useState<FormData>({ name: "", email: "", company: "", services: [], message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading,   setLoading]   = useState(false);
+  const [error,     setError]     = useState("");
 
   function toggle(id: string) {
     setForm(p => ({
@@ -36,10 +38,24 @@ export default function ContactForm() {
 
   const valid = form.name.trim() && form.email.includes("@") && form.message.trim().length > 10;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!valid) return;
-    setSubmitted(true);
+    if (!valid || loading) return;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -214,23 +230,28 @@ export default function ContactForm() {
                 </Field>
 
                 {/* Submit */}
+                {error && (
+                  <p className="text-red-400 text-xs">{error}</p>
+                )}
                 <div className="flex items-center justify-between pt-1 gap-4">
                   <p className="text-cream/22 text-xs leading-snug">
                     No commitment. We'll reply within 24 hours.
                   </p>
                   <button
                     type="submit"
-                    disabled={!valid}
+                    disabled={!valid || loading}
                     className={`flex-shrink-0 inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-200 ${
-                      valid
+                      valid && !loading
                         ? "bg-ember text-cream hover:bg-ember-dark hover:scale-[1.04] active:scale-95 cursor-pointer"
                         : "bg-cream/[0.07] text-cream/22 cursor-not-allowed"
                     }`}
                   >
-                    Send it
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {loading ? "Sending…" : "Send it"}
+                    {!loading && (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </form>
