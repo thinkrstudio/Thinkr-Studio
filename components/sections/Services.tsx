@@ -1,24 +1,16 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const services = [
   {
     number: "01",
-    title: "Brand & Identity",
-    description:
-      "Your visual identity is the first thing people judge — before they read a word. We make sure it says exactly the right thing, instantly.",
-    tags: ["Logo Design", "Brand Strategy", "Style Guides", "Visual Identity"],
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
     title: "Web Design & Development",
+    href: "/services/web-development",
     description:
       "Fast, conversion-focused websites built on Next.js. No templates, no cutting corners. Sites that perform from the moment they go live.",
     tags: ["Next.js", "React", "CMS Integration", "Performance"],
@@ -29,8 +21,22 @@ const services = [
     ),
   },
   {
+    number: "02",
+    title: "Brand & Identity",
+    href: "/services/brand-identity",
+    description:
+      "Your visual identity is the first thing people judge — before they read a word. We make sure it says exactly the right thing, instantly.",
+    tags: ["Logo Design", "Brand Strategy", "Style Guides", "Visual Identity"],
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+      </svg>
+    ),
+  },
+  {
     number: "03",
     title: "Motion & Interaction",
+    href: "/services/motion-interaction",
     description:
       "The difference between a website and an experience. We use animation to guide attention and build trust — not just to impress.",
     tags: ["Framer Motion", "GSAP", "Lottie", "3D Experiences"],
@@ -43,6 +49,7 @@ const services = [
   {
     number: "04",
     title: "Digital Strategy & Growth",
+    href: "/services/digital-strategy",
     description:
       "Pretty doesn't pay the bills. We tie every design decision to your goals and track what actually moves the needle.",
     tags: ["CRO", "Analytics", "SEO Architecture", "Growth Design"],
@@ -77,7 +84,7 @@ export default function Services() {
               style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
             >
               Built to<br />
               <span className="italic text-ember">perform.</span>
@@ -117,10 +124,10 @@ function ServiceCard({
   return (
     <motion.div
       ref={ref}
-      className="group relative p-7 md:p-9 border border-forest/10 rounded-2xl bg-cream overflow-hidden cursor-default transition-colors duration-350 hover:bg-forest hover:border-forest"
+      className="group relative p-7 md:p-9 border border-forest/10 rounded-2xl bg-cream overflow-hidden transition-colors duration-350 hover:bg-forest hover:border-forest"
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.08, duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+      transition={{ delay: index * 0.08, duration: 0.65, ease: EASE }}
     >
       {/* Ghost number */}
       <span
@@ -144,7 +151,7 @@ function ServiceCard({
       </p>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mb-6">
         {service.tags.map((tag) => (
           <span
             key={tag}
@@ -154,6 +161,17 @@ function ServiceCard({
           </span>
         ))}
       </div>
+
+      {/* Learn more link */}
+      <Link
+        href={service.href}
+        className="inline-flex items-center gap-1.5 text-[0.75rem] font-semibold text-ember group-hover:text-ember-light transition-colors duration-200 tracking-wide"
+      >
+        Learn more
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </Link>
 
       {/* Bottom accent line */}
       <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-ember/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />

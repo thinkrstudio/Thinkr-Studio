@@ -1,17 +1,25 @@
 import Link from "next/link";
 
 const workLinks = [
-  { label: "Space Perfumes",            href: "https://spaceperfumes.com" },
-  { label: "Khan's Authentic HVAC",     href: "https://khanshvac.com" },
-  { label: "Forever",                   href: "https://forever-ten-lime.vercel.app/" },
-  { label: "Sphere Connect",            href: "https://sphereconnect.io" },
+  { label: "Space Perfumes",        href: "https://spaceperfumes.com" },
+  { label: "Khan's Authentic HVAC", href: "https://khanshvac.com" },
+  { label: "Forever",               href: "https://forever-ten-lime.vercel.app/" },
+  { label: "Sphere Connect",        href: "https://sphereconnect.io" },
 ];
 
-const footerLinks = {
-  Services: ["Brand & Identity", "Web Development", "Motion Design", "Digital Strategy"],
-  Company:  ["About", "Process", "Blog", "Careers"],
-  Connect:  ["Facebook", "Instagram"],
-};
+const serviceLinks = [
+  { label: "Web Development",  href: "/services/web-development" },
+  { label: "Brand & Identity", href: "/services/brand-identity" },
+  { label: "Motion Design",    href: "/services/motion-interaction" },
+  { label: "Digital Strategy", href: "/services/digital-strategy" },
+];
+
+const companyLinks = [
+  { label: "About",    href: "/#about" },
+  { label: "Process",  href: "/#process" },
+  { label: "Work",     href: "/#work" },
+  { label: "Contact",  href: "/#contact" },
+];
 
 const socialIcons = [
   {
@@ -40,8 +48,6 @@ export default function Footer() {
             <p className="text-cream/38 text-sm leading-relaxed mt-4 max-w-[240px]">
               No fluff, no bloated process — just brand-forward websites built to work hard for your business.
             </p>
-
-            {/* Social icons */}
             <div className="mt-6 flex gap-2.5">
               {socialIcons.map((s) => (
                 <a
@@ -60,11 +66,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Work column — external project links */}
+          {/* Work column */}
           <div>
-            <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">
-              Work
-            </p>
+            <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">Work</p>
             <ul className="space-y-2.5">
               {workLinks.map((item) => (
                 <li key={item.label}>
@@ -81,50 +85,76 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Remaining link columns */}
-          {(Object.entries(footerLinks) as [string, string[]][]).map(([category, items]) => (
-            <div key={category}>
-              <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">
-                {category}
-              </p>
-              <ul className="space-y-2.5">
-                {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href={
-                        category === "Connect"
-                          ? socialIcons.find(s => s.label === item)?.href ?? "#"
-                          : "#"
-                      }
-                      target={category === "Connect" ? "_blank" : undefined}
-                      rel={category === "Connect" ? "noopener noreferrer" : undefined}
-                      className="text-cream/45 text-sm hover:text-cream transition-colors duration-200 cursor-pointer leading-snug"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Services column */}
+          <div>
+            <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">Services</p>
+            <ul className="space-y-2.5">
+              {serviceLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-cream/45 text-sm hover:text-cream transition-colors duration-200 cursor-pointer leading-snug"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company column */}
+          <div>
+            <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">Company</p>
+            <ul className="space-y-2.5">
+              {companyLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-cream/45 text-sm hover:text-cream transition-colors duration-200 cursor-pointer leading-snug"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Connect column */}
+          <div>
+            <p className="text-cream/22 text-[0.64rem] tracking-[0.18em] uppercase mb-4 font-semibold">Connect</p>
+            <ul className="space-y-2.5">
+              {socialIcons.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cream/45 text-sm hover:text-cream transition-colors duration-200 cursor-pointer leading-snug"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="mailto:thinkrstudiobd@gmail.com"
+                  className="text-cream/45 text-sm hover:text-cream transition-colors duration-200 cursor-pointer leading-snug"
+                >
+                  Email Us
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Divider */}
         <div className="w-full h-px bg-cream/[0.07] mb-7" />
 
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-cream/22 text-xs">
           <p>© 2026 Thinkr Studio. All rights reserved.</p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="hover:text-cream/55 transition-colors duration-200 cursor-pointer"
-              >
-                {item}
-              </a>
-            ))}
+            <Link href="/privacy" className="hover:text-cream/55 transition-colors duration-200 cursor-pointer">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-cream/55 transition-colors duration-200 cursor-pointer">Terms of Service</Link>
           </div>
         </div>
       </div>
