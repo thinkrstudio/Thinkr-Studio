@@ -35,31 +35,31 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-cream">
+    <section id="process" className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div ref={ref} className="flex flex-col md:flex-row md:items-end gap-6 mb-14 md:mb-20">
           <div>
             <motion.span
-              className="block text-[0.68rem] tracking-[0.18em] uppercase text-ember font-semibold mb-3"
+              className="block text-sm md:text-[0.68rem] tracking-[0.18em] uppercase text-ink/60 font-semibold mb-3"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
             >
               How We Work
             </motion.span>
             <motion.h2
-              className="font-display font-black text-forest leading-[0.92] tracking-tight"
-              style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}
+              className="font-display font-bold md:font-normal uppercase text-ink leading-[0.95] md:leading-[0.9] tracking-[-0.02em] md:tracking-[-0.035em]"
+              style={{ fontSize: "clamp(2rem, 5.6vw, 5.25rem)" }}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             >
               Brief to live<br />
-              <span className="italic text-ember">in weeks.</span>
+              in weeks.
             </motion.h2>
           </div>
           <motion.p
-            className="text-forest/55 text-sm md:text-base leading-relaxed max-w-[240px] md:mb-1"
+            className="text-ink/70 text-lg md:text-base leading-snug md:leading-relaxed max-w-[260px] md:mb-1"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.25 }}
@@ -94,7 +94,7 @@ function StepCard({
   return (
     <motion.div
       ref={ref}
-      className="group relative p-7 border border-forest/10 rounded-2xl bg-cream hover:border-ember/35 transition-colors duration-300 cursor-default overflow-hidden"
+      className="group relative p-7 border border-ink/10 rounded-2xl bg-white hover:border-ember/35 transition-colors duration-300 cursor-default overflow-hidden"
       initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
@@ -103,24 +103,24 @@ function StepCard({
       {!isLast && (
         <div
           aria-hidden
-          className="hidden lg:block absolute top-10 -right-2.5 w-5 h-px bg-forest/12 z-10"
+          className="hidden lg:block absolute top-10 -right-2.5 w-5 h-px bg-ink/12 z-10"
         />
       )}
 
       {/* Top row */}
       <div className="flex items-start justify-between mb-7">
-        <span className="font-display text-[4.5rem] font-black leading-none text-forest/[0.07] group-hover:text-ember/12 transition-colors duration-300 select-none">
+        <span className="font-display text-[4.5rem] font-black leading-none text-ink/[0.07] group-hover:text-ember/12 transition-colors duration-300 select-none">
           {step.number}
         </span>
-        <span className="text-[0.65rem] text-forest/38 bg-forest/5 px-2.5 py-1 rounded-full mt-1 font-medium tracking-wide">
+        <span className="text-xs md:text-[0.65rem] text-ink/50 bg-ink/5 px-2.5 py-1 rounded-full mt-1 font-medium tracking-wide">
           {step.duration}
         </span>
       </div>
 
-      <h3 className="font-display text-xl font-bold text-forest mb-3 leading-tight">
+      <h3 className="font-display text-xl font-bold text-ink mb-3 leading-tight">
         {step.title}
       </h3>
-      <p className="text-forest/55 text-sm leading-relaxed">
+      <p className="text-ink/70 text-lg md:text-sm leading-snug md:leading-relaxed">
         {step.description}
       </p>
 

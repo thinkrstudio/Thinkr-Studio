@@ -40,7 +40,7 @@ function ThinkrWord({ phase }: { phase: Phase }) {
       {LETTERS.map((letter, i) => (
         <motion.span
           key={i}
-          className="font-display font-black text-cream select-none"
+          className="font-display font-black text-paper select-none"
           style={{
             fontSize:           "clamp(4.5rem, 13vw, 12rem)",
             lineHeight:         1,
@@ -162,7 +162,7 @@ export default function Preloader() {
       {(["top", "bottom"] as const).map((half) => (
         <motion.div
           key={half}
-          className="absolute inset-x-0 bg-forest overflow-hidden"
+          className="absolute inset-x-0 bg-ink overflow-hidden"
           style={
             half === "top"
               ? { top: 0,    height: "50%" }

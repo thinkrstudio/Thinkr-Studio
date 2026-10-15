@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Familjen_Grotesk } from "next/font/google";
 import "./globals.css";
 import { PreloaderProvider } from "@/lib/preloader-context";
 import Preloader from "@/components/layout/Preloader";
 import Navbar from "@/components/layout/Navbar";
 
-const inter = Inter({
+// One family for headings and body — closest free match to Founders Grotesk.
+const familjen = Familjen_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-familjen",
   display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -36,8 +29,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-cream text-forest antialiased overflow-x-hidden">
+    <html lang="en" className={familjen.variable}>
+      <body className="bg-white text-ink antialiased overflow-x-hidden">
         <PreloaderProvider>
           <Preloader />
           <Navbar />

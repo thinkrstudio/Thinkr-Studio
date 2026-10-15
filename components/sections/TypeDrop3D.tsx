@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const WORDS = [
-  { text: "Think.", color: "#ffeed4", justify: "flex-start", enterDelay: 0.0,  exitDelay: 0.7  },
+  { text: "Think.", color: "#ffffff", justify: "flex-start", enterDelay: 0.0,  exitDelay: 0.7  },
   { text: "Build.", color: "#c16934", justify: "center",     enterDelay: 0.75, exitDelay: 0.35 },
-  { text: "Grow.",  color: "#ffeed4", justify: "flex-end",   enterDelay: 1.5,  exitDelay: 0.0  },
+  { text: "Grow.",  color: "#ffffff", justify: "flex-end",   enterDelay: 1.5,  exitDelay: 0.0  },
 ];
 
 // Heavy, weighted ease — accelerates into the drop, decelerates on land
@@ -22,7 +22,7 @@ export default function TypeDrop3D() {
   return (
     <section
       ref={ref}
-      className="relative bg-forest overflow-hidden py-10 md:py-16 px-6 md:px-10 lg:px-16"
+      className="relative bg-ink overflow-hidden py-10 md:py-16 px-6 md:px-10 lg:px-16"
     >
       {/* Deep amber glow */}
       <div
@@ -97,11 +97,11 @@ export default function TypeDrop3D() {
               : { duration: 0.25, delay: 0 }
           }
         >
-          <div className="flex-1 h-px bg-cream/10" />
+          <div className="flex-1 h-px bg-paper/10" />
           <span className="text-[0.62rem] tracking-[0.22em] uppercase text-ember/70 font-semibold whitespace-nowrap">
             Thinkr Studio — Est. 2025
           </span>
-          <div className="flex-1 h-px bg-cream/10" />
+          <div className="flex-1 h-px bg-paper/10" />
         </motion.div>
       </div>
     </section>

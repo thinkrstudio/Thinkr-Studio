@@ -41,10 +41,10 @@ export default function WebDevelopmentPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative bg-forest-dark overflow-hidden pt-36 pb-28 px-6 md:px-10 lg:px-16">
+      <section className="relative bg-ink-dark overflow-hidden pt-36 pb-28 px-6 md:px-10 lg:px-16">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 left-1/3 w-[600px] h-[600px] rounded-full bg-ember/[0.08] blur-[140px]" />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cream/[0.025] blur-[100px]" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-paper/[0.025] blur-[100px]" />
         </div>
 
         <div ref={heroRef} className="relative z-10 max-w-5xl mx-auto">
@@ -53,7 +53,7 @@ export default function WebDevelopmentPage() {
             animate={bodyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/#services" className="inline-flex items-center gap-2 text-cream/38 text-xs tracking-[0.15em] uppercase mb-8 hover:text-cream/60 transition-colors">
+            <Link href="/#services" className="inline-flex items-center gap-2 text-paper/38 text-xs tracking-[0.15em] uppercase mb-8 hover:text-paper/60 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
@@ -71,18 +71,18 @@ export default function WebDevelopmentPage() {
           </motion.span>
 
           <motion.h1
-            className="font-display font-black text-cream leading-[0.9] tracking-tight mb-7"
+            className="font-display font-black text-paper leading-[0.9] tracking-tight mb-7"
             style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
             initial={{ opacity: 0, y: 40 }}
             animate={bodyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
           >
             Websites that<br />
-            <span className="italic text-ember">perform.</span>
+            <span className="text-ember">perform.</span>
           </motion.h1>
 
           <motion.p
-            className="text-cream/55 text-lg leading-relaxed max-w-xl mb-10"
+            className="text-paper/55 text-lg leading-relaxed max-w-xl mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={bodyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
@@ -99,7 +99,7 @@ export default function WebDevelopmentPage() {
           >
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-ember text-cream font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-ember text-paper font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
             >
               Start a project
               <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -111,23 +111,23 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* ── What we build ────────────────────────────────────── */}
-      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-cream">
+      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionLabel label="What We Build" />
-          <h2 className="font-display font-black text-forest leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+          <h2 className="font-display font-black text-ink leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
             Every type of web project.<br />
-            <span className="italic text-ember">Done properly.</span>
+            <span className="text-ember">Done properly.</span>
           </h2>
-          <p className="text-forest/55 text-base leading-relaxed max-w-lg mb-16">
+          <p className="text-ink/55 text-base leading-relaxed max-w-lg mb-16">
             Whether you need a single landing page or a full-featured web application, we approach every project with the same rigour.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {deliverables.map((item, i) => (
               <FadeCard key={item.title} delay={i * 0.07}>
-                <div className="p-7 rounded-2xl border border-forest/10 bg-cream h-full hover:border-ember/30 transition-colors duration-300">
-                  <h3 className="font-display font-bold text-forest text-lg mb-2">{item.title}</h3>
-                  <p className="text-forest/55 text-sm leading-relaxed">{item.desc}</p>
+                <div className="p-7 rounded-2xl border border-ink/10 bg-white h-full hover:border-ember/30 transition-colors duration-300">
+                  <h3 className="font-display font-bold text-ink text-lg mb-2">{item.title}</h3>
+                  <p className="text-ink/55 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </FadeCard>
             ))}
@@ -136,24 +136,24 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* ── Process ──────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-forest">
+      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-ink">
         <div className="max-w-7xl mx-auto">
           <SectionLabel label="Our Process" light />
-          <h2 className="font-display font-black text-cream leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+          <h2 className="font-display font-black text-paper leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
             No surprises.<br />
-            <span className="italic text-ember">Just results.</span>
+            <span className="text-ember">Just results.</span>
           </h2>
-          <p className="text-cream/50 text-base leading-relaxed max-w-lg mb-16">
+          <p className="text-paper/50 text-base leading-relaxed max-w-lg mb-16">
             Our process is built around one thing: reducing risk. You'll always know where we are and what's next.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {process.map((step, i) => (
               <FadeCard key={step.step} delay={i * 0.07}>
-                <div className="p-7 rounded-2xl border border-cream/[0.08] h-full">
-                  <span className="block font-display text-[3rem] font-black text-cream/[0.06] leading-none mb-4">{step.step}</span>
-                  <h3 className="font-display font-bold text-cream text-xl mb-2">{step.title}</h3>
-                  <p className="text-cream/50 text-sm leading-relaxed">{step.desc}</p>
+                <div className="p-7 rounded-2xl border border-paper/[0.08] h-full">
+                  <span className="block font-display text-[3rem] font-black text-paper/[0.06] leading-none mb-4">{step.step}</span>
+                  <h3 className="font-display font-bold text-paper text-xl mb-2">{step.title}</h3>
+                  <p className="text-paper/50 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </FadeCard>
             ))}
@@ -162,25 +162,25 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* ── Tech stack ───────────────────────────────────────── */}
-      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-cream">
+      <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionLabel label="Tech Stack" />
-          <h2 className="font-display font-black text-forest leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+          <h2 className="font-display font-black text-ink leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
             The tools behind<br />
-            <span className="italic text-ember">the results.</span>
+            <span className="text-ember">the results.</span>
           </h2>
-          <p className="text-forest/55 text-base leading-relaxed max-w-lg mb-16">
+          <p className="text-ink/55 text-base leading-relaxed max-w-lg mb-16">
             We don't pick tools for hype. Every choice in our stack is justified by performance, maintainability, and long-term value for your business.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {stack.map((item, i) => (
               <FadeCard key={item.name} delay={i * 0.06}>
-                <div className="flex gap-4 p-6 rounded-xl border border-forest/10 hover:border-ember/30 transition-colors duration-300">
+                <div className="flex gap-4 p-6 rounded-xl border border-ink/10 hover:border-ember/30 transition-colors duration-300">
                   <div className="w-2 h-2 rounded-full bg-ember mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-forest text-sm mb-1">{item.name}</h3>
-                    <p className="text-forest/50 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="font-semibold text-ink text-sm mb-1">{item.name}</h3>
+                    <p className="text-ink/50 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </FadeCard>
@@ -231,20 +231,20 @@ function CtaSection() {
   const ref    = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-forest-dark">
+    <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-ink-dark">
       <div ref={ref} className="max-w-3xl mx-auto text-center">
         <motion.h2
-          className="font-display font-black text-cream leading-tight tracking-tight mb-5"
+          className="font-display font-black text-paper leading-tight tracking-tight mb-5"
           style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.75, ease: EASE }}
         >
           Ready to build something<br />
-          <span className="italic text-ember">worth visiting?</span>
+          <span className="text-ember">worth visiting?</span>
         </motion.h2>
         <motion.p
-          className="text-cream/50 text-base leading-relaxed mb-10"
+          className="text-paper/50 text-base leading-relaxed mb-10"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
@@ -258,7 +258,7 @@ function CtaSection() {
         >
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-ember text-cream font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-ember text-paper font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
           >
             Start a conversation
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

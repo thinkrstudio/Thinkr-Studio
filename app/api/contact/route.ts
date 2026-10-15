@@ -1,12 +1,28 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(request: Request) {
-  const { name, email, company, services, message } = await request.json();
+// Form input goes into an HTML email, so escape it — otherwise a visitor could
+// inject markup or links into the message we receive.
+const escapeHtml = (value: unknown) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
-  if (!name || !email || !message) {
+export async function POST(request: Request) {
+  const body = await request.json();
+
+  if (!body.name || !body.email || !body.message) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
+
+  const name     = escapeHtml(body.name);
+  const email    = escapeHtml(body.email);
+  const company  = escapeHtml(body.company);
+  const message  = escapeHtml(body.message);
+  const services: string[] = Array.isArray(body.services) ? body.services.map(escapeHtml) : [];
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -24,8 +40,8 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `"Thinkr Studio" <${process.env.GMAIL_USER}>`,
       to: "thinkrstudiobd@gmail.com",
-      replyTo: email,
-      subject: `New inquiry from ${name}`,
+      replyTo: String(body.email),
+      subject: `New inquiry from ${String(body.name)}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
           <h2 style="margin-bottom:4px;">New project inquiry</h2>

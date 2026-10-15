@@ -102,37 +102,37 @@ export default function TermsPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-forest-dark pt-36 pb-20 px-6 md:px-10 lg:px-16">
+      <section className="bg-ink-dark pt-36 pb-20 px-6 md:px-10 lg:px-16">
         <div className="max-w-3xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-2 text-cream/38 text-xs tracking-[0.15em] uppercase mb-10 hover:text-cream/60 transition-colors">
+          <Link href="/" className="inline-flex items-center gap-2 text-paper/38 text-xs tracking-[0.15em] uppercase mb-10 hover:text-paper/60 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
             </svg>
             Back to Home
           </Link>
           <span className="block text-[0.67rem] tracking-[0.2em] uppercase text-ember font-semibold mb-4">Legal</span>
-          <h1 className="font-display font-black text-cream leading-tight tracking-tight mb-5" style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
+          <h1 className="font-display font-black text-paper leading-tight tracking-tight mb-5" style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
             Terms of Service
           </h1>
-          <p className="text-cream/45 text-base leading-relaxed">
+          <p className="text-paper/45 text-base leading-relaxed">
             These terms govern your engagement with Thinkr Studio. Please read them carefully before starting a project with us.
             If you have any questions, email us at{" "}
             <a href="mailto:thinkrstudiobd@gmail.com" className="text-ember hover:underline">thinkrstudiobd@gmail.com</a>.
           </p>
-          <p className="text-cream/28 text-sm mt-4">Last updated: April 2026</p>
+          <p className="text-paper/28 text-sm mt-4">Last updated: April 2026</p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-cream">
+      <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="space-y-12">
             {sections.map((section) => (
               <div key={section.title}>
-                <h2 className="font-display font-bold text-forest text-2xl mb-5">{section.title}</h2>
+                <h2 className="font-display font-bold text-ink text-2xl mb-5">{section.title}</h2>
                 <div className="space-y-4">
                   {section.body.map((para, i) => (
-                    <p key={i} className="text-forest/65 text-base leading-relaxed">{para}</p>
+                    <p key={i} className="text-ink/65 text-base leading-relaxed">{para}</p>
                   ))}
                 </div>
               </div>
@@ -140,22 +140,22 @@ export default function TermsPage() {
           </div>
 
           {/* Contact */}
-          <div className="mt-16 p-8 rounded-2xl bg-forest">
-            <h3 className="font-display font-bold text-cream text-xl mb-3">Questions about these Terms?</h3>
-            <p className="text-cream/55 text-sm leading-relaxed mb-5">
+          <div className="mt-16 p-8 rounded-2xl bg-ink">
+            <h3 className="font-display font-bold text-paper text-xl mb-3">Questions about these Terms?</h3>
+            <p className="text-paper/55 text-sm leading-relaxed mb-5">
               We're happy to walk through any of this with you before you commit to working with us. Reach out and we'll respond within 24 hours.
             </p>
             <a
               href="mailto:thinkrstudiobd@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ember text-cream font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ember text-paper font-semibold text-sm hover:bg-ember-dark transition-colors duration-200"
             >
               Contact us
             </a>
           </div>
 
-          <div className="mt-10 pt-10 border-t border-forest/10 flex flex-wrap gap-6 text-sm text-forest/40">
-            <Link href="/privacy" className="hover:text-forest/70 transition-colors">Privacy Policy</Link>
-            <Link href="/" className="hover:text-forest/70 transition-colors">Back to Home</Link>
+          <div className="mt-10 pt-10 border-t border-ink/10 flex flex-wrap gap-6 text-sm text-ink/40">
+            <Link href="/privacy" className="hover:text-ink/70 transition-colors">Privacy Policy</Link>
+            <Link href="/" className="hover:text-ink/70 transition-colors">Back to Home</Link>
           </div>
         </div>
       </section>

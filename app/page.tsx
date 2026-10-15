@@ -1,7 +1,8 @@
 import Hero from "@/components/sections/Hero";
 import TypeDrop3D from "@/components/sections/TypeDrop3D";
-import SocialProof from "@/components/sections/SocialProof";
+import FeaturedClients from "@/components/sections/FeaturedClients";
 import Services from "@/components/sections/Services";
+import TechStack from "@/components/sections/TechStack";
 import FeaturedWork from "@/components/sections/FeaturedWork";
 import Process from "@/components/sections/Process";
 import WhyUs from "@/components/sections/WhyUs";
@@ -13,10 +14,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TypeDrop3D />
-      <SocialProof />
-      <Services />
       <FeaturedWork />
+      <TypeDrop3D />
+      <FeaturedClients />
+      <Services />
+      <TechStack />
       <Process />
       <WhyUs />
       <Testimonials />

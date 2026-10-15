@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
-  --color-cream: #ffeed4;
-  --color-cream-dark: #f5ddb5;
-  --color-cream-muted: #fdf5e8;
-  --color-forest: #384531;
-  --color-forest-light: #4a5c3f;
-  --color-forest-dark: #2a3324;
+  /* Brand Colors — black & white, with ember as the single accent */
+  --color-paper: #ffffff;
+  --color-paper-dark: #f2f2f0;
+  --color-paper-muted: #f7f7f5;
+  --color-ink: #111111;
+  --color-ink-light: #2b2b2b;
+  --color-ink-dark: #0a0a0a;
   --color-ember: #c16934;
   --color-ember-light: #d4824a;
   --color-ember-dark: #9e5226;
 
   /* Typography */
-  --font-display: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter, "Inter"), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-familjen, "Familjen Grotesk"), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: var(--font-familjen, "Familjen Grotesk"), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ─── Keyframes ─────────────────────────────── */
@@ -43,8 +43,8 @@ html {
 }
 
 body {
-  background-color: #ffeed4;
-  color: #384531;
+  background-color: #ffffff;
+  color: #111111;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,12 +53,12 @@ body {
 
 ::selection {
   background-color: #c16934;
-  color: #ffeed4;
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar        { width: 4px; }
-::-webkit-scrollbar-track  { background: #ffeed4; }
-::-webkit-scrollbar-thumb  { background: #384531; border-radius: 2px; }
+::-webkit-scrollbar-track  { background: #ffffff; }
+::-webkit-scrollbar-thumb  { background: #111111; border-radius: 2px; }
 
 /* ─── Animation Utilities ────────────────────── */
 .animate-marquee   { animation: marquee 40s linear infinite; }
