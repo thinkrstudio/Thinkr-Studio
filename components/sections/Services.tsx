@@ -19,7 +19,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
         href={service.href}
         className="group grid grid-cols-1 md:grid-cols-[4rem_1fr_1.1fr] gap-x-6 gap-y-3 border-t border-ink/12 py-8 md:py-10 cursor-pointer"
       >
-        <span className="text-xs font-medium tabular-nums text-ink/40 md:pt-3">
+        <span className="text-xs font-semibold tabular-nums text-ember md:pt-3">
           {String(index + 1).padStart(2, "0")}
         </span>
 
@@ -32,7 +32,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
 
         <div>
           <p className="text-lg md:text-[0.95rem] leading-snug md:leading-relaxed text-ink/70">{service.description}</p>
-          <p className="mt-3 text-[0.8rem] md:text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
+          <p className="mt-3 text-[0.8rem] md:text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ember">
             {service.tags.join(" · ")}
           </p>
           <span className="mt-5 inline-flex items-center gap-1.5 border-b border-ink/30 pb-0.5 text-sm md:text-xs font-semibold uppercase tracking-[0.06em] text-ink transition-colors duration-200 group-hover:border-ember group-hover:text-ember">

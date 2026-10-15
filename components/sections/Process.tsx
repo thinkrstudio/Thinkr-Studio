@@ -69,7 +69,7 @@ export default function Process() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {steps.map((step, i) => (
             <StepCard key={step.number} step={step} index={i} isLast={i === steps.length - 1} />
           ))}
@@ -78,6 +78,25 @@ export default function Process() {
     </section>
   );
 }
+
+// Orange arrow badge that sits in the gap between two cards.
+function FlowArrow({ className, rotate = 0 }: { className: string; rotate?: number }) {
+  return (
+    <span
+      aria-hidden
+      className={`absolute z-10 h-8 w-8 items-center justify-center rounded-full bg-ember text-white ring-4 ring-white ${className}`}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" style={{ transform: `rotate(${rotate}deg)` }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-5-5 5 5-5 5" />
+      </svg>
+    </span>
+  );
+}
+
+// Arrows show the order: one row of four on desktop (→ → →); on smaller screens
+// two per row, so the end of a row points diagonally down to the next one (→ ↙ →).
+const RIGHT  = "top-1/2 -translate-y-1/2 -right-6 md:-right-[26px]";
+const CORNER = "-left-6 -bottom-6 md:-left-[26px] md:-bottom-[26px]";
 
 function StepCard({
   step,
@@ -90,42 +109,45 @@ function StepCard({
 }) {
   const ref    = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
+  const endOfRow = index % 2 === 1;
 
   return (
-    <motion.div
-      ref={ref}
-      className="group relative p-7 border border-ink/10 rounded-2xl bg-white hover:border-ember/35 transition-colors duration-300 cursor-default overflow-hidden"
-      initial={{ opacity: 0, y: 36 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-    >
-      {/* Connector (desktop only) */}
-      {!isLast && (
-        <div
-          aria-hidden
-          className="hidden lg:block absolute top-10 -right-2.5 w-5 h-px bg-ink/12 z-10"
-        />
+    <div className="relative">
+      <motion.div
+        ref={ref}
+        className="group relative h-full p-4 md:p-7 border border-ink/10 rounded-2xl bg-white hover:border-ember/35 transition-colors duration-300 cursor-default overflow-hidden"
+        initial={{ opacity: 0, y: 36 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: index * 0.1, duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+      >
+        {/* Top row */}
+        <div className="flex items-start justify-between mb-4 md:mb-7">
+          <span className="font-display text-5xl md:text-[4.5rem] font-black leading-none text-ink/[0.07] group-hover:text-ember/12 transition-colors duration-300 select-none">
+            {step.number}
+          </span>
+          <span className="text-[0.7rem] md:text-[0.65rem] text-ink/50 bg-ink/5 px-2 md:px-2.5 py-1 rounded-full mt-1 font-medium tracking-wide whitespace-nowrap">
+            {step.duration}
+          </span>
+        </div>
+
+        <h3 className="font-display text-base md:text-xl font-bold text-ink mb-2 md:mb-3 leading-tight">
+          {step.title}
+        </h3>
+        <p className="text-ink/70 text-sm leading-snug md:leading-relaxed">
+          {step.description}
+        </p>
+
+        {/* Accent underline */}
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-ember/55 to-transparent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+      </motion.div>
+
+      {!isLast && !endOfRow && <FlowArrow className={`flex ${RIGHT}`} />}
+      {!isLast && endOfRow && (
+        <>
+          <FlowArrow className={`hidden lg:flex ${RIGHT}`} />
+          <FlowArrow className={`flex lg:hidden ${CORNER}`} rotate={135} />
+        </>
       )}
-
-      {/* Top row */}
-      <div className="flex items-start justify-between mb-7">
-        <span className="font-display text-[4.5rem] font-black leading-none text-ink/[0.07] group-hover:text-ember/12 transition-colors duration-300 select-none">
-          {step.number}
-        </span>
-        <span className="text-xs md:text-[0.65rem] text-ink/50 bg-ink/5 px-2.5 py-1 rounded-full mt-1 font-medium tracking-wide">
-          {step.duration}
-        </span>
-      </div>
-
-      <h3 className="font-display text-xl font-bold text-ink mb-3 leading-tight">
-        {step.title}
-      </h3>
-      <p className="text-ink/70 text-lg md:text-sm leading-snug md:leading-relaxed">
-        {step.description}
-      </p>
-
-      {/* Accent underline */}
-      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-ember/55 to-transparent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-    </motion.div>
+    </div>
   );
 }

@@ -98,20 +98,20 @@ export default function WhyUs() {
           </div>
 
           {/* Right — differentiators grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
             {differentiators.map((item, i) => (
               <motion.div
                 key={item.title}
-                className="p-5 border border-paper/10 rounded-xl hover:border-ember/35 hover:bg-paper/[0.04] transition-all duration-300 cursor-default"
+                className="p-4 md:p-5 border border-paper/10 rounded-xl hover:border-ember/35 hover:bg-paper/[0.04] transition-all duration-300 cursor-default"
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.12 + i * 0.07, duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-ember mb-3" />
-                <h4 className="text-paper font-semibold text-lg md:text-sm mb-1.5 leading-snug">
+                <h4 className="text-paper font-semibold text-base md:text-sm mb-1.5 leading-snug">
                   {item.title}
                 </h4>
-                <p className="text-paper/60 text-base md:text-xs leading-snug md:leading-relaxed">
+                <p className="text-paper/60 text-sm md:text-xs leading-snug md:leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
