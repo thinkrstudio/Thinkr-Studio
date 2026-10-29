@@ -72,7 +72,7 @@ export default function Services() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Every service is tied to a real business outcome. We don&apos;t decorate, we solve problems.
+            Two things, done properly: a website that wins you enquiries, and Meta ads that bring the right people to it.
           </motion.p>
         </div>
 

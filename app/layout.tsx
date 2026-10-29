@@ -13,14 +13,14 @@ const familjen = Familjen_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Thinkr Studio — Design with purpose, build with motion",
+  title: "Thinkr Studio | Websites & Meta Ads",
   description:
-    "Thinkr Studio transforms brands with websites that tell stories, delight users, and boost growth.",
-  keywords: ["web agency", "design studio", "web development", "brand design", "motion design"],
+    "Thinkr Studio designs and builds websites that win enquiries, and sets up and runs Facebook and Instagram ads that bring the right people to them.",
+  keywords: ["web design", "website development", "Meta ads", "Facebook ads", "Instagram ads", "landing page"],
   openGraph: {
-    title: "Thinkr Studio — Design with purpose, build with motion",
+    title: "Thinkr Studio | Websites & Meta Ads",
     description:
-      "Thinkr Studio transforms brands with websites that tell stories, delight users, and boost growth.",
+      "Websites that win enquiries, and Meta ads that bring the right people to them.",
     type: "website",
   },
 };

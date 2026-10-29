@@ -7,10 +7,15 @@ import { WHATSAPP, WHATSAPP_ICON_PATH } from "@/lib/contact";
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const SERVICES = [
-  { id: "brand",    label: "Brand & Identity" },
-  { id: "web",      label: "Web Design & Dev" },
-  { id: "motion",   label: "Motion & Interaction" },
-  { id: "strategy", label: "Digital Strategy" },
+  { id: "website", label: "Website" },
+  { id: "ads",     label: "Meta Ads" },
+];
+
+// Decides which pricing brochure is emailed back: Bangladesh gets BDT, everyone else CAD.
+const LOCATIONS = [
+  { id: "ca",    label: "Canada" },
+  { id: "bd",    label: "Bangladesh" },
+  { id: "other", label: "Elsewhere" },
 ];
 
 type FormData = {
@@ -18,6 +23,7 @@ type FormData = {
   email: string;
   company: string;
   services: string[];
+  location: string;
   message: string;
 };
 
@@ -25,7 +31,7 @@ export default function ContactForm() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  const [form,      setForm]      = useState<FormData>({ name: "", email: "", company: "", services: [], message: "" });
+  const [form,      setForm]      = useState<FormData>({ name: "", email: "", company: "", services: [], location: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
   const [error,     setError]     = useState("");
@@ -37,7 +43,7 @@ export default function ContactForm() {
     }));
   }
 
-  const valid = form.name.trim() && form.email.includes("@") && form.message.trim().length > 10;
+  const valid = form.name.trim() && form.email.includes("@") && form.location && form.message.trim().length > 10;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -176,9 +182,9 @@ export default function ContactForm() {
                 <div>
                   <h3 className="font-display font-black text-paper text-2xl mb-2">You're in.</h3>
                   <p className="text-paper/48 text-sm leading-relaxed max-w-xs">
-                    We'll review your project and get back to{" "}
-                    <span className="text-paper/70 font-medium">{form.email}</span>{" "}
-                    within 24 hours — with a real response.
+                    Our pricing brochure is on its way to{" "}
+                    <span className="text-paper/70 font-medium">{form.email}</span>.
+                    We&apos;ll review your project and reply within 24 hours.
                   </p>
                 </div>
               </motion.div>
@@ -221,6 +227,31 @@ export default function ContactForm() {
                     onChange={e => setForm(p => ({ ...p, company: e.target.value }))}
                     className={INPUT}
                   />
+                </Field>
+
+                {/* Location — picks the brochure (and currency) we email back */}
+                <Field label="Where are you based? *">
+                  <div role="radiogroup" className="flex flex-wrap gap-2 mt-0.5">
+                    {LOCATIONS.map(l => {
+                      const on = form.location === l.id;
+                      return (
+                        <button
+                          key={l.id}
+                          type="button"
+                          role="radio"
+                          aria-checked={on}
+                          onClick={() => setForm(p => ({ ...p, location: l.id }))}
+                          className={`px-4 py-2 rounded-full text-sm md:text-[0.75rem] font-semibold border transition-all duration-200 cursor-pointer ${
+                            on
+                              ? "border-ember/60 bg-ember/12 text-paper"
+                              : "border-paper/[0.1] bg-paper/[0.04] text-paper/42 hover:border-paper/22 hover:text-paper/65"
+                          }`}
+                        >
+                          {l.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </Field>
 
                 {/* Services */}
